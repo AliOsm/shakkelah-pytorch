@@ -91,7 +91,7 @@ def train(
       optimizer.step()
 
       if (batch_index + 1) % 1000 == 0:
-        print(f"Epoch [{epoch + 1}/{EPOCHS}], Batch [{batch_index + 1}/{len(train_data_loader)}], Loss: {loss.item():.4f}")
+        print(f"Epoch [{epoch + 1}/{epochs}], Batch [{batch_index + 1}/{len(train_data_loader)}], Loss: {loss.item():.4f}")
 
     model.eval()
 
@@ -107,7 +107,7 @@ def train(
         loss = criterion(output.view(-1, output.size(-1)), diacritics_batch.view(-1))
         val_loss += loss.item()
 
-    print(f"Epoch [{epoch + 1}/{EPOCHS}], Validation Loss: {val_loss / len(val_data_loader):.4f}")
+    print(f"Epoch [{epoch + 1}/{epochs}], Validation Loss: {val_loss / len(val_data_loader):.4f}")
 
     model.train()
 
