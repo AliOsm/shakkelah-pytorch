@@ -42,7 +42,7 @@ def main():
   criterion = nn.CrossEntropyLoss()
   optimizer = torch.optim.Adam(model.parameters())
 
-  train(model, train_data_loader, val_data_loader, optimizer, criterion, device, args.epochs)
+  train(model, train_data_loader, val_data_loader, optimizer, criterion, device, args.epochs, characters)
 
 
 def load_characters() -> list[str]:
@@ -66,6 +66,7 @@ def train(
   criterion: nn.Module,
   device: str,
   epochs: int,
+  characters: list[str],
 ) -> None:
   for epoch in tqdm(range(epochs), desc='Epochs'):
     for (
